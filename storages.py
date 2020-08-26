@@ -51,14 +51,14 @@ class Simple(Base):
             'starting': task.starting,
             'body': task.body,
         }
-        print(f"Поступила на хранение задача: {task.body}")
+        print(f"В хранилище записана задача: {task.body}")
 
     async def pop(self, task_id) -> Optional[Task]:
         """
             Достает задачу  из хранилища.
         """
         task = self.storage.pop(task_id, None)
-        print(f"Из хранилища забрана задача: {task}")
+        print(f"Из хранилища забрана (и удалена) задача: {task}")
 
         return None if task is None else Task(
             id=task_id, starting=task['starting'], body=task['body']
