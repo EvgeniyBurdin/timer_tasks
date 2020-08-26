@@ -23,7 +23,7 @@ async def delayed_send(timer: int, task: Task) -> None:
     await storage.push(task)
 
     task_id = task.id
-    del task
+    del task  # экземпляр более не нужен
 
     await asyncio.sleep(timer)
 
@@ -35,7 +35,7 @@ async def delayed_send(timer: int, task: Task) -> None:
 
 async def delay_task(timer: int, task: Task) -> None:
     """
-        Создает и запускаеи процесс для задачи.
+        Создает и запускает процесс для задачи.
     """
     asyncio.create_task(delayed_send(timer, task))
 
