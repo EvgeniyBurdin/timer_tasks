@@ -8,13 +8,15 @@ storage = TasksStorage()
 
 
 async def send_task(task: dict):
-    """ Отправляет задачу далее по назначению.
     """
-    print(f"Задача {task} отправлена, {get_current_time()}.")
+        Отправляет задачу далее по назначению.
+    """
+    print(f"Задача {task} отправлена, время: {get_current_time()}.")
 
 
 async def delayed_send(timer: int, task: Task) -> None:
-    """ Отправка задачи через время указанное в timer.
+    """
+        Отправка задачи через время указанное в timer.
     """
 
     task.starting = make_start_time(timer)
@@ -32,14 +34,15 @@ async def delayed_send(timer: int, task: Task) -> None:
 
 
 async def delay_task(timer: int, task: Task) -> None:
-    """ Создает и запускаеи процесс для задачи.
+    """
+        Создает и запускаеи процесс для задачи.
     """
     asyncio.create_task(delayed_send(timer, task))
 
 
 async def demo():
 
-    # Имеются 3 задачи с разной паузой перед отправкой
+    # Имеются 3 задачи
     task_1 = Task(body={'task_1': '11111'})
     task_2 = Task(body={'task_2': '2222'})
     task_3 = Task(body={'task_3': '333'})
