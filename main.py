@@ -14,7 +14,7 @@ async def send_task(task: dict):
 
 
 async def delayed_send(timer: int, task: Task) -> None:
-    """ Обеспечивает отправку задачи через время указанное в timer.
+    """ Отправка задачи через время указанное в timer.
     """
 
     task.starting = make_start_time(timer)
@@ -32,7 +32,7 @@ async def delayed_send(timer: int, task: Task) -> None:
 
 
 async def delay_task(timer: int, task: Task) -> None:
-    """ Откладывает задачу на время указанное в timer.
+    """ Создает и запускаеи процесс для задачи.
     """
     asyncio.create_task(delayed_send(timer, task))
 
